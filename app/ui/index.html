@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'none'; form-action 'none'">
+  <title>hexlock</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><h1>hexlock</h1><button id="lock" class="icon-button" type="button" aria-label="Заблокировать" title="Заблокировать" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></button></header>
+    <section id="auth">
+      <h2 id="auth-title">Открыть хранилище</h2>
+      <form id="auth-form"><label for="master">Мастер-пароль</label><input id="master" type="password" autocomplete="off" maxlength="1024" required><div id="repeat-group" hidden><label for="master-repeat">Повторите пароль</label><input id="master-repeat" type="password" autocomplete="off" maxlength="1024"></div><button type="submit">Продолжить</button></form>
+      <button id="reset-open" class="text-button" type="button" hidden>Забыли мастер-пароль?</button>
+    </section>
+    <section id="vault" hidden>
+      <div id="records-view">
+      <div class="toolbar"><input id="search" type="search" placeholder="Поиск по сайту или логину" aria-label="Поиск"><button id="review" type="button" aria-expanded="false">Проверка</button><button id="import" type="button">Импорт</button><button id="export" type="button">Экспорт</button><button id="add" type="button">Добавить</button></div>
+      <div id="list" class="list"></div>
+      </div>
+      <section id="review-panel" class="review-panel" hidden>
+        <div class="review-heading"><h2>Проверка паролей</h2><button id="review-back" type="button">К записям</button></div>
+        <p id="review-summary" role="status"></p>
+        <input id="review-search" type="search" placeholder="Поиск по сайту или логину" aria-label="Поиск в проверке">
+        <div id="review-list" class="list"></div>
+      </section>
+    </section>
+    <dialog id="editor">
+      <form id="entry-form">
+        <h2 id="editor-title">Добавить запись</h2>
+        <label for="domain">Сайт или приложение</label><input id="domain" placeholder="example.com" required>
+        <label for="username">Логин</label><input id="username" autocomplete="off">
+        <label for="password">Пароль</label><div class="password-row"><input id="password" type="password" autocomplete="off" required><button id="generate" type="button">Создать</button></div>
+        <label for="length">Символов при генерации</label><input id="length" type="number" min="12" max="128" value="20">
+        <div class="actions"><button id="cancel" type="button">Отмена</button><button type="submit">Сохранить</button></div>
+      </form>
+    </dialog>
+    <dialog id="import-dialog">
+      <h2>Импорт записей</h2>
+      <div id="import-summary"></div>
+      <div id="import-examples" class="import-examples"></div>
+      <div id="import-reasons" class="import-reasons"></div>
+      <p class="import-warning">Файл экспорта хранит пароли открытым текстом. После проверки импорта удалите его вручную.</p>
+      <div class="actions"><button id="import-cancel" type="button">Отмена</button><button id="import-confirm" type="button">Импортировать</button></div>
+    </dialog>
+    <dialog id="reset-dialog">
+      <form id="reset-form">
+        <h2>Новое пустое хранилище</h2>
+        <p class="import-warning">Старое хранилище будет заменено пустым без резервной копии. Вернуть прежние записи после сброса нельзя.</p>
+        <label for="reset-password">Новый мастер-пароль</label><input id="reset-password" type="password" autocomplete="off" minlength="8" maxlength="1024" required>
+        <label for="reset-repeat">Повторите пароль</label><input id="reset-repeat" type="password" autocomplete="off" minlength="8" maxlength="1024" required>
+        <label for="reset-confirmation">Введите СБРОС для подтверждения</label><input id="reset-confirmation" autocomplete="off" required>
+        <div class="actions"><button id="reset-cancel" type="button">Отмена</button><button type="submit">Создать заново</button></div>
+        <p id="reset-error" role="status"></p>
+      </form>
+    </dialog>
+    <dialog id="export-dialog">
+      <h2>Экспорт паролей</h2>
+      <p class="import-warning">Все логины и пароли попадут в файл открытым текстом. Не отправляйте его в чат и не храните в облаке.</p>
+      <label for="export-format">Формат</label><select id="export-format"><option value="csv">CSV</option><option value="tsv">TSV</option><option value="txt">TXT</option></select>
+      <div class="actions"><button id="export-cancel" type="button">Отмена</button><button id="export-confirm" type="button">Сохранить файл</button></div>
+    </dialog>
+    <p id="message" role="status" aria-live="polite"></p>
+    <div id="toast" role="status" aria-live="polite" hidden></div>
+  </main>
+</body>
+</html>

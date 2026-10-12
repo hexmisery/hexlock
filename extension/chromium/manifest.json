@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "hexlock",
+  "version": "0.7.0",
+  "description": "Заполнение паролей из локального хранилища",
+  "permissions": [
+    "contextMenus",
+    "nativeMessaging",
+    "scripting",
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

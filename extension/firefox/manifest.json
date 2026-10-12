@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "hexlock",
+  "version": "0.7.0",
+  "description": "Заполнение паролей из локального хранилища",
+  "permissions": [
+    "contextMenus",
+    "nativeMessaging",
+    "scripting",
+    "activeTab"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "kluch@hexmisery.org"
+    }
+  }
+}
