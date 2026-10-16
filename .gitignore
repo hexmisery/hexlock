@@ -1,0 +1,15 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.env
+.env.*
+!.env.example
+vault.json
+vault.json.*
+runtime.json
+hexlock-export.*
+.hexlock-export-*
