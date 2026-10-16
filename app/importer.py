@@ -59,6 +59,8 @@ def parse(data, suffix):
         headers = [header.strip().lower() for header in next(reader)]
     except StopIteration:
         raise ValueError("Файл пуст") from None
+    except csv.Error:
+        raise ValueError("Не удалось разобрать таблицу") from None
     site_index = column(headers, SITE_HEADERS)
     user_index = column(headers, USER_HEADERS)
     password_index = column(headers, PASSWORD_HEADERS)
