@@ -4,7 +4,7 @@ version = "0.7.0"
 description = "Local open-source password manager"
 readme = "README.md"
 requires-python = ">=3.12"
-authors = [{name = "@hexmisery"}]
+authors = [{name = "@hexm1sery"}]
 dependencies = ["cryptography>=43,<47", "argon2-cffi>=23.1,<26", "pywebview>=5,<7"]
 
 [project.optional-dependencies]

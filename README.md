@@ -68,4 +68,4 @@ Copy-Item README.md, LICENSE dist
 
 Забытый мастер-пароль восстановить нельзя. Сброс удаляет прежние записи без резервной копии. Независимого аудита безопасности не было.
 
-[MIT](LICENSE) · Автор: [@hexmisery](https://github.com/hexmisery).
+[MIT](LICENSE) · Автор: [@hexm1sery](https://github.com/hexmisery).
